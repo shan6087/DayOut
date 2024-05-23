@@ -1,0 +1,64 @@
+body {
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.title-container {
+  width: 600px;
+  height: 300px;
+  top: 322px;
+  margin-left: 142px;
+  gap: 0px;
+  border-radius: 12px 0px 0px 0px;
+  opacity: 0px;
+}
+
+.title-text {
+  width: 100px;
+  height: 216px;
+  margin-top: -102px;
+  margin-left: 20px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Impact;
+  font-size: 70px;
+  font-weight: 400;
+  line-height: 215.81px;
+  text-align: left;
+  color: #ffffff;
+  letter-spacing: 8px;
+}
+
+.title-description {
+  width: 500px;
+  height: 85px;
+  margin-top: -50px;
+  margin-left: 18px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: arial;
+  font-size: 15px;
+  font-weight: 1px;
+  line-height: 28.27px;
+  text-align: left;
+  color: #ffffff;
+}
+
+.title-button {
+  width: Hug (157px) px;
+  height: Hug (57px) px;
+  margin-top: 50px;
+  margin-left: 15px;
+  padding: 17px 28px 17px 28px;
+  gap: 25px;
+  border-radius: 12px 12px 12px 12px;
+  opacity: 0px;
+  background-color: #006dd1;
+  border: none;
+  font-family: Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 23px;
+  text-align: left;
+  color: #ffffff;
+}
