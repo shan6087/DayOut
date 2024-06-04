@@ -5,18 +5,40 @@ import Fullpage, {
   FullpageNavigation,
 } from "@ap.cx/react-fullpage";
 import "../assets/css/Carousel.css";
-import bimg from "../assets/images/bimg.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import CardCarousel from "../components/CardCarousel";
 import NavComponent from "./NavComponent";
+
+// datas
+
+const pageData = [
+  {
+    title: "INDONESIA",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nunc, tortor mauris eget ut integer sit. Purus consequat urna vulputate turpis blandit sed.",
+    backgroundImage: require("../assets/images/bimg.jpeg"),
+  },
+  {
+    title: "GOA",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nunc, tortor mauris eget ut integer sit. Purus consequat urna vulputate turpis blandit sed.",
+    backgroundImage: require("../assets/images/goa.jpg"),
+  },
+  {
+    title: "MALAYSIA",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nunc, tortor mauris eget ut integer sit. Purus consequat urna vulputate turpis blandit sed.",
+    backgroundImage: require("../assets/images/malaysia.jpeg"),
+  },
+];
 
 const Carousel = () => {
   const SectionStyle = {
     height: "100vh",
     width: "100%",
     display: "flex",
-    justifyContent: "centre",
+
     alignItems: "center",
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -33,81 +55,36 @@ const Carousel = () => {
 
   return (
     <Fullpage>
-      <FullpageNavigation style={{ ...buttonStyle }} />
+      <FullpageNavigation style={{ ...buttonStyle }}></FullpageNavigation>
+
       <FullPageSections>
-        <FullpageSection
-          style={{ ...SectionStyle, backgroundImage: `url(${bimg})` }}
-        >
-          {" "}
-          <div className="title-container">
-            <div className="title-text">
-              <h1>INDONESIA</h1>
+        {pageData.map((page, index) => (
+          <FullpageSection
+            key={index}
+            style={{
+              ...SectionStyle,
+              backgroundImage: `url(${page.backgroundImage})`,
+            }}
+          >
+            <div className="title-container">
+              <div className="title-text">
+                <h1>{page.title}</h1>
+              </div>
+              <div className="title-description">
+                <h3>{page.description}</h3>
+              </div>
+              <div>
+                <button className="title-button">
+                  Explore &nbsp;
+                  <FontAwesomeIcon icon={faArrowRight} beatFade />
+                </button>
+              </div>
+              <CardCarousel />
+
+              <NavComponent />
             </div>
-            <div className="title-description">
-              <h3>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                nunc, tortor mauris eget ut integer sit. Purus consequat urna
-                vulputate turpis blandit sed.{" "}
-              </h3>
-            </div>
-            <div>
-              <button className="title-button">
-                Explore &nbsp;
-                <FontAwesomeIcon icon={faArrowRight} beatFade />
-              </button>
-            </div>
-            <CardCarousel />
-            <NavComponent />
-          </div>
-        </FullpageSection>
-        <FullpageSection
-          style={{ ...SectionStyle, backgroundImage: `url(${bimg})` }}
-        >
-          <div className="title-container">
-            <div className="title-text">
-              <h1>INDONESIA</h1>
-            </div>
-            <div className="title-description">
-              <h3>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                nunc, tortor mauris eget ut integer sit. Purus consequat urna
-                vulputate turpis blandit sed.{" "}
-              </h3>
-            </div>
-            <div>
-              <button className="title-button">
-                Explore &nbsp;
-                <FontAwesomeIcon icon={faArrowRight} beatFade />
-              </button>
-            </div>
-            <CardCarousel />
-            <NavComponent />
-          </div>
-        </FullpageSection>
-        <FullpageSection
-          style={{ ...SectionStyle, backgroundImage: `url(${bimg})` }}
-        >
-          <div className="title-container">
-            <div className="title-text">
-              <h1>INDONESIA</h1>
-            </div>
-            <div className="title-description">
-              <h3>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                nunc, tortor mauris eget ut integer sit. Purus consequat urna
-                vulputate turpis blandit sed.{" "}
-              </h3>
-            </div>
-            <div>
-              <button className="title-button">
-                Explore &nbsp;
-                <FontAwesomeIcon icon={faArrowRight} beatFade />
-              </button>
-            </div>
-            <CardCarousel />
-            <NavComponent />
-          </div>
-        </FullpageSection>
+          </FullpageSection>
+        ))}
       </FullPageSections>
     </Fullpage>
   );
