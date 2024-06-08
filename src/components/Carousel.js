@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import CardCarousel from "../components/CardCarousel";
 import NavComponent from "./NavComponent";
+import bimg from "../assets/images/bimg.jpeg";
 
 // datas
 
@@ -60,7 +61,6 @@ const Carousel = () => {
       <FullPageSections>
         {pageData.map((page, index) => (
           <FullpageSection
-            key={index}
             style={{
               ...SectionStyle,
               backgroundImage: `url(${page.backgroundImage})`,

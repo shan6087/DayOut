@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import {
+  EffectCoverflow,
+  Pagination,
+  Navigation,
+  Autoplay,
+} from "swiper/modules";
 import "../assets/css/CardCarousel.css";
 // import Card from "react-bootstrap/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import "swiper/css";
-import { Autoplay } from "swiper/modules";
-import { Pagination } from "swiper/modules";
+
+// import { Pagination } from "swiper/modules";
+
+import cimg from "../assets/images/goaCard.jpg";
 
 const cardData = [
   {
@@ -28,48 +36,58 @@ const cardData = [
 ];
 
 const CardCarousel = () => {
-  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-
   return (
-    <div className="swiper-container">
+    <div className="container">
       <Swiper
-        slidesPerView={4}
-        centeredSlides={true}
-        spaceBetween={30}
+        effect={"coverflow"}
         grabCursor={true}
-        pagination={{
+        centeredSlides={true}
+        loop={true}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 2.5,
+        }}
+        pagination={{ el: ".swiper-pagination", clickable: true }}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
           clickable: true,
         }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
-        modules={[Pagination, Autoplay]}
+        modules={[EffectCoverflow, Pagination, Navigation]}
+        className="swiper_container"
       >
-        {" "}
         {cardData.map((cards, index) => (
-          <SwiperSlide
-            key={index}
-            className={`swiper-slide ${
-              index === 0 && activeSlideIndex === 0 ? "active" : ""
-            }`}
-          >
-            <div className="text-container">
-              <h1>{cards.title}</h1>
+          <SwiperSlide>
+            <div>
+              <h1 className="heading">{cards.title}</h1>
             </div>
             <div className="star-container">
-              {[...Array(5)].map((_, i) => (
-                <FontAwesomeIcon
-                  key={i}
-                  icon={faStar}
-                  style={{ color: i < 4 ? "#FFD43B" : "#FFFFFF" }}
-                />
-              ))}
+              <FontAwesomeIcon
+                icon={faStar}
+                style={{ height: "20px", color: "#FFB932" }}
+              />
+              <FontAwesomeIcon
+                icon={faStar}
+                style={{ height: "20px", color: "#FFB932" }}
+              />
+              <FontAwesomeIcon
+                icon={faStar}
+                style={{ height: "20px", color: "#FFB932" }}
+              />
+              <FontAwesomeIcon
+                icon={faStar}
+                style={{ height: "20px", color: "#FFB932" }}
+              />
+              <FontAwesomeIcon
+                icon={faStar}
+                style={{ height: "20px", color: "#FFFF" }}
+              />
             </div>
-            <div className="image-container">
-              <img src={cards.image} alt={cards.alt} />
-            </div>
+
+            <img src={cards.image} alt={cards.alt} />
           </SwiperSlide>
         ))}
       </Swiper>
